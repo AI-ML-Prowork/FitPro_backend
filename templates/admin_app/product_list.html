@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Example DataTables Card-->
+<body>
+
+	<h2>Product List</h2>
+	
+	{% if products %}
+		<table border="1">
+			<tr>
+				<th>Product Name</th>
+				<th>Description</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Additional Field 1</th>
+				<th>Additional Field 2</th>
+				<th>Additional Field 3</th>
+				<th>Additional Field 4</th>
+				<th>Additional Field 5</th>
+			</tr>
+			{% for product in products %}
+				<tr>
+					<td>{{ product.product_name }}</td>
+					<td>{{ product.description }}</td>
+					<td>{{ product.price }}</td>
+					<td>{{ product.quantity }}</td>
+					<td>{{ product.additionalField1 }}</td>
+					<td>{{ product.additionalField2 }}</td>
+					<td>{{ product.additionalField3 }}</td>
+					<td>{{ product.additionalField4 }}</td>
+					<td>{{ product.additionalField5 }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>No products available.</p>
+	{% endif %}
+	
+	</body>
+
+{% endblock %}
