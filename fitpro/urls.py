@@ -24,6 +24,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('admin_app.urls')),
+    path('', include('fit_app.urls')),
+
 
     #API INTEGRATION FOR URLS.PY
     # path('api/', include('rest_framework.urls'))
