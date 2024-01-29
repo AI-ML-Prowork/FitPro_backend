@@ -6,9 +6,9 @@ from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Add_Product
-from .models import UserProfile
+
 from .models import Ordered_Product
-from .models import Wallet
+
 from rest_framework import status
 
 
@@ -83,36 +83,36 @@ def product_list(request):
 
 
 # @login_required(login_url='signin')
-def add_profile(request):
-    message = ''
-    if request.method == "POST":
-        user_name = request.POST.get('user_name')
-        age = request.POST.get('age')
-        height = request.POST.get('height')
-        weight = request.POST.get('weight')
-        any_disease = request.POST.get('any_disease', '')
-        allergies = request.POST.get('allergies', '')
+# def add_profile(request):
+#     message = ''
+#     if request.method == "POST":
+#         user_name = request.POST.get('user_name')
+#         age = request.POST.get('age')
+#         height = request.POST.get('height')
+#         weight = request.POST.get('weight')
+#         any_disease = request.POST.get('any_disease', '')
+#         allergies = request.POST.get('allergies', '')
 
-        create_profile = UserProfile(
-            user_name=user_name,
-            age=age,
-            height=height,
-            weight=weight,
-            any_disease=any_disease,
-            allergies=allergies
-        )
-        create_profile.save()
-        message = 'Profile Added Successfully.'
+#         create_profile = UserProfile(
+#             user_name=user_name,
+#             age=age,
+#             height=height,
+#             weight=weight,
+#             any_disease=any_disease,
+#             allergies=allergies
+#         )
+#         create_profile.save()
+#         message = 'Profile Added Successfully.'
 
-    return render(request, 'admin_app/add_profile.html', {'message': message})
+#     return render(request, 'admin_app/add_profile.html', {'message': message})
 
 
 
 
 # @login_required(login_url='signin')
-def profile_list(request):
-    profiles = UserProfile.objects.all()
-    return render(request, 'admin_app/profile_list.html', {'profiles': profiles})
+# def profile_list(request):
+#     profiles = UserProfile.objects.all()
+#     return render(request, 'admin_app/profile_list.html', {'profiles': profiles})
 
 
 
@@ -276,50 +276,32 @@ def add_product_api(request):
     
 
 
-from .serializers import UserProfileSerializer
-@api_view(['GET'])
-def user_list_api(request):
-    users = User.objects.all()
-    users_serializer = UserSerializer(users, many=True)
+# from .serializers import UserProfileSerializer
+# @api_view(['GET'])
+# def user_list_api(request):
+#     users = User.objects.all()
+#     users_serializer = UserSerializer(users, many=True)
 
-    return Response({'status': 200, 'payload': users_serializer.data})
+#     return Response({'status': 200, 'payload': users_serializer.data})
 
 
-@api_view(['POST'])
-def add_user_api(request):
-    if request.method == 'POST':
-        serializer4 = UserSerializer(data=request.data)
-        if serializer4.is_valid():
-            # Create a new user with secure password handling
-            user1 = serializer4.save()
-            user1.set_password(request.data['password'])
-            user1.save()
+# @api_view(['POST'])
+# def add_user_api(request):
+#     if request.method == 'POST':
+#         serializer4 = UserSerializer(data=request.data)
+#         if serializer4.is_valid():
+#             # Create a new user with secure password handling
+#             user1 = serializer4.save()
+#             user1.set_password(request.data['password'])
+#             user1.save()
 
-            return Response({'status': 201, 'message': 'User added successfully'}, status=status.HTTP_201_CREATED)
-        return Response({'status': 400, 'message': 'Invalid data provided', 'errors': serializer4.errors}, status=status.HTTP_400_BAD_REQUEST)
+#             return Response({'status': 201, 'message': 'User added successfully'}, status=status.HTTP_201_CREATED)
+#         return Response({'status': 400, 'message': 'Invalid data provided', 'errors': serializer4.errors}, status=status.HTTP_400_BAD_REQUEST)
     
 
 
 
-from .serializers import UserSerializer
-@api_view(['GET'])
-def profile_list_api(request):
-    profiles = UserProfile.objects.all()
-    profiles_serializer = UserProfileSerializer(profiles, many=True)
 
-    return Response({'status': 200, 'payload': profiles_serializer.data})
-
-
-
-@api_view(['POST'])
-def add_profile_api(request):
-    if request.method == 'POST':
-        serializer2 = UserProfileSerializer(data=request.data)
-        if serializer2.is_valid():
-            serializer2.save()
-            return Response({'status': 201, 'message': 'Profile added successfully'}, status=status.HTTP_201_CREATED)
-        return Response({'status': 400, 'message': 'Invalid data provided'}, status=status.HTTP_400_BAD_REQUEST)
-    
 
 
 from .serializers import Ordered_ProductSerializer
@@ -341,27 +323,27 @@ def add_order_api(request):
         return Response({'status': 400, 'message': 'Invalid data provided'}, status=status.HTTP_400_BAD_REQUEST)
 
 
-from .serializers import wallet_Serializer
-@api_view(['GET'])
-def wallet_list_api(request):
-    wallets = Wallet.objects.all()
-    wallets_serializer = wallet_Serializer(wallets, many=True)
+# from .serializers import wallet_Serializer
+# @api_view(['GET'])
+# def wallet_list_api(request):
+#     wallets = Wallet.objects.all()
+#     wallets_serializer = wallet_Serializer(wallets, many=True)
 
-    return Response({'status': 200, 'payload': wallets_serializer.data})
-
-
+#     return Response({'status': 200, 'payload': wallets_serializer.data})
 
 
 
-@api_view(['POST'])
-def add_money_to_wallet(request):
-    if request.method == 'POST':
-        print(request.data)
-        serializer = wallet_Serializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({'status': 201, 'message': 'Money added to wallet successfully'}, status=status.HTTP_201_CREATED)
-        return Response({'status': 400, 'message': 'Invalid data provided'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+# @api_view(['POST'])
+# def add_money_to_wallet(request):
+#     if request.method == 'POST':
+#         print(request.data)
+#         serializer = wallet_Serializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response({'status': 201, 'message': 'Money added to wallet successfully'}, status=status.HTTP_201_CREATED)
+#         return Response({'status': 400, 'message': 'Invalid data provided'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 

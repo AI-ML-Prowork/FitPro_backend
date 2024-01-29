@@ -16,18 +16,18 @@ class Add_ProductAdmin(admin.ModelAdmin):
 admin.site.register(Add_Product, Add_ProductAdmin)
 
 
-from admin_app.models import UserProfile
-class UserProfileInline(admin.ModelAdmin):
-    list_display = ('user_name', 
-                    'age', 
-                    'height', 
-                    'weight', 
-                    'any_disease', 
-                    'allergies'
-                    )
+# from admin_app.models import UserProfile
+# class UserProfileInline(admin.ModelAdmin):
+#     list_display = ('user_name', 
+#                     'age', 
+#                     'height', 
+#                     'weight', 
+#                     'any_disease', 
+#                     'allergies'
+#                     )
 
 
-admin.site.register(UserProfile, UserProfileInline)
+# admin.site.register(UserProfile, UserProfileInline)
 
 
 from admin_app.models import Ordered_Product
@@ -43,11 +43,11 @@ admin.site.register(Ordered_Product, Ordered_ProductAdmin)
 
 
 
-from admin_app.models import Wallet
-class WalletAdmin(admin.ModelAdmin):
-    list_display = ('amount', 
-                    'payment_mode', 
-                    'date'
-                    )
+# from admin_app.models import Wallet
+# class WalletAdmin(admin.ModelAdmin):
+#     list_display = ('amount', 
+#                     'payment_mode', 
+#                     'date'
+#                     )
     
-admin.site.register(Wallet, WalletAdmin)
+# admin.site.register(Wallet, WalletAdmin)
