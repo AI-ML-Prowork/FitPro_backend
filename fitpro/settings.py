@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'fitpro.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'fitpro',
+        'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '5432',          
+        'PASSWORD': 'Fa4D1a31Cg43FGg4622D3d465BG-f6G*',
+        'HOST': 'monorail.proxy.rlwy.net',
+        'PORT': '11584',         
 
     }
 }
@@ -134,9 +134,9 @@ STATIC_URL = "static/"
 
 MEDIA_URL= 'images/'
 
-STATICFILES_DIRS=[BASE_DIR/"static"]
+STATICFILES_DIRS = os.path.join(BASE_DIR,'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
-STATIC_ROOT= BASE_DIR/"staticfiles"
 
 MEDIA_ROOT= BASE_DIR/"images"
 
