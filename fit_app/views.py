@@ -52,7 +52,7 @@ def add_profile_api(request):
         if serializer2.is_valid():
             serializer2.save()
             return Response({'status': 201, 'message': 'Profile added successfully'}, status=status.HTTP_201_CREATED)
-        return Response({'status': 400, 'message': 'Invalid data provided'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'status': 400, 'message': 'Invalid data provided','errors': serializer2.errors}, status=status.HTTP_400_BAD_REQUEST)
     
 
 
@@ -78,4 +78,4 @@ def add_money_to_wallet(request):
         if serializer.is_valid():
             serializer.save()
             return Response({'status': 201, 'message': 'Money added to wallet successfully'}, status=status.HTTP_201_CREATED)
-        return Response({'status': 400, 'message': 'Invalid data provided'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'status': 400, 'message': 'Invalid data provided','errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)

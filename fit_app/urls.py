@@ -1,6 +1,10 @@
 from django.urls import path
 from . views import *
 
+
+app_name = 'fit_app'
+
+
 urlpatterns = [
     # path("add_user_api", add_user_api, name='add_user_api'),
 
