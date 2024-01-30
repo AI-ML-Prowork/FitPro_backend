@@ -15,6 +15,8 @@ import os
 import dj_database_url  
 from decouple import config
 from dotenv import load_dotenv
+load_dotenv()
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -80,17 +82,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'fitpro.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'Fa4D1a31Cg43FGg4622D3d465BG-f6G*',
-        'HOST': 'monorail.proxy.rlwy.net',
-        'PORT': '11584',         
 
+# Database
+# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
 
 DATABASES['default'] = dj_database_url.config()
 

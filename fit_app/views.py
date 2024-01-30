@@ -12,6 +12,16 @@ from django.contrib.auth.models import User
 from rest_framework import status
 from .models import UserProfile
 from .models import Wallet
+from dotenv import load_dotenv
+import os
+
+def configure():
+    load_dotenv()
+
+
+
+
+
 
 
 
@@ -26,6 +36,7 @@ from .serializers import UserProfileSerializer
 from .serializers import UserSerializer
 @api_view(['GET'])
 def profile_list_api(request):
+    configure()
     profiles = UserProfile.objects.all()
     profiles_serializer = UserProfileSerializer(profiles, many=True)
 
@@ -35,6 +46,7 @@ def profile_list_api(request):
 
 @api_view(['POST'])
 def add_profile_api(request):
+    configure()
     if request.method == 'POST':
         serializer2 = UserProfileSerializer(data=request.data)
         if serializer2.is_valid():
@@ -47,6 +59,7 @@ def add_profile_api(request):
 from .serializers import wallet_Serializer
 @api_view(['GET'])
 def wallet_list_api(request):
+    configure()
     wallets = Wallet.objects.all()
     wallets_serializer = wallet_Serializer(wallets, many=True)
 
@@ -58,6 +71,7 @@ def wallet_list_api(request):
 
 @api_view(['POST'])
 def add_money_to_wallet(request):
+    configure()
     if request.method == 'POST':
         print(request.data)
         serializer = wallet_Serializer(data=request.data)

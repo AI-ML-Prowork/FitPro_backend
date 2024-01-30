@@ -6,30 +6,40 @@ from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Add_Product
-
+import os
 from .models import Ordered_Product
-
+from dotenv import load_dotenv
 from rest_framework import status
 
 
+
+def configure():
+    load_dotenv()
+
+    
+
 # @login_required(login_url='signin')
 def base(request):
+    configure()
     return render(request, 'base.html')
 
 
 # @login_required(login_url='signin')
 def dashboard(request):
+    configure()
     return render(request, 'admin_app/dashboard.html')
 
 
 
 # @login_required(login_url='signin')
 def diet_plan(request):
+    configure()
     return render(request, 'admin_app/diet_plan.html')
 
 
 # @login_required(login_url='signin')
 def order_list(request):
+    configure()
     return render(request, 'admin_app/order_list.html')
 
 
@@ -40,6 +50,7 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 # @login_required(login_url='signin')
 def add_product(request):
+    configure()
     message = ''
     if request.method == "POST":         
         product_name = request.POST.get('product_name')
@@ -76,6 +87,7 @@ def add_product(request):
 
 # @login_required(login_url='signin')
 def product_list(request):
+    configure()
     products = Add_Product.objects.all()
     return render(request, 'admin_app/product_list.html', {'products': products})
 
@@ -118,77 +130,92 @@ def product_list(request):
 
 # @login_required(login_url='signin')
 def reward_list(request):
+    configure()
     return render(request, 'admin_app/reward_list.html')
 
 
 # @login_required(login_url='signin')
 def subscription_plan(request):
+    configure()
     return render(request, 'admin_app/subscription_plan.html')
 
 
 # @login_required(login_url='signin')
 def user_list(request):
+    configure()
     return render(request, 'admin_app/user_list.html')
 
 
 # @login_required(login_url='signin')
 def wallet_management(request):
+    configure()
     return render(request, 'admin_app/wallet_management.html')
 
 
 # @login_required(login_url='signin')
 def order_list(request):
+    configure()
     return render(request, 'admin_app/order_list.html')
 
 
 # @login_required(login_url='signin')
 def add_product(request):
+    configure()
     return render(request, 'admin_app/add_product.html')
 
 
 # @login_required(login_url='signin')
 def product_list(request):
+    configure()
     return render(request, 'admin_app/product_list.html')
 
 
 # @login_required(login_url='signin')
 def profile_list(request):
+    configure()
     return render(request, 'admin_app/profile_list.html')
 
 
 # @login_required(login_url='signin')
 def add_profile(request):
+    configure()
     return render(request, 'admin_app/add_profile.html')
 
 
 # @login_required(login_url='signin')
 def reward_list(request):
+    configure()
     return render(request, 'admin_app/reward_list.html')
 
 
 # @login_required(login_url='signin')
 def subscription_plan(request):
+    configure()
     return render(request, 'admin_app/subscription_plan.html')
 
 
 # @login_required(login_url='signin')
 def user_list(request):
+    configure()
     return render(request, 'admin_app/user_list.html')
 
 
 # @login_required(login_url='signin')
 def wallet_management(request):
+    configure()
     return render(request, 'admin_app/wallet_management.html')
 
 
 # @login_required(login_url='signin')
 def transaction_history(request):
+    configure()
     return render(request, 'admin_app/transaction_history.html')
 
 
 
 
 def signup(request):
+    configure()
     if request.user.is_authenticated:
         return redirect('/')
     if request.method == 'POST':
@@ -222,6 +249,7 @@ def signup(request):
 
 
 def signin(request):
+    configure()
     if request.user.is_authenticated:
         return redirect('/')
     if request.method == 'POST':
@@ -240,6 +268,7 @@ def signin(request):
 
 # @login_required(login_url='signin')
 def logout(request):
+    configure()
     auth_logout(request)
     messages.success(request, 'Logged out successfully')
     return redirect('/signin/')
@@ -259,6 +288,7 @@ from rest_framework.response import Response
 from .serializers import Add_ProductSerializer
 @api_view(['GET'])
 def product_list_api(request):
+    configure()
     products = Add_Product.objects.all()
     product_serializer = Add_ProductSerializer(products, many=True)
 
@@ -267,6 +297,7 @@ def product_list_api(request):
 
 @api_view(['POST'])
 def add_product_api(request):
+    configure()
     if request.method == 'POST':
         serializer3 = Add_ProductSerializer(data=request.data)
         if serializer3.is_valid():
@@ -307,6 +338,7 @@ def add_product_api(request):
 from .serializers import Ordered_ProductSerializer
 @api_view(['GET'])
 def order_list_api(request):
+    configure()
     orders = Ordered_Product.objects.all()
     orders_serializer = Ordered_ProductSerializer(orders, many=True)
 
@@ -315,6 +347,7 @@ def order_list_api(request):
 
 @api_view(['POST'])
 def add_order_api(request):
+    configure()
     if request.method == 'POST':
         serializer1 = Ordered_ProductSerializer(data=request.data)
         if serializer1.is_valid():
