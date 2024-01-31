@@ -127,19 +127,21 @@ class rewards_api(APIView):
             return Response({'status': 400, 'message': 'Invalid data provided','errors': serializer5.errors}, status=status.HTTP_400_BAD_REQUEST)
         
 
-    def put(self, request, pk):
+    
+    def patch( self, request):
         configure()
-        rewards = Add_reward.objects.get(pk=pk)
-        serializer5 = Add_reward_Serializer(rewards, data=request.data)
+        rewards = Add_reward.objects.get(pk=request.data["id"])
+        serializer5 = Add_reward_Serializer(rewards, data=request.data, partial=True)
         if serializer5.is_valid():
             serializer5.save()
             return Response({'status': 200, 'message': 'Reward updated successfully'}, status=status.HTTP_200_OK)
-        return Response({'status': 400, 'message': 'Invalid data provided','errors': serializer5.errors}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'status': 400, 'message': 'Invalid data provided', 'errors': serializer5.errors}, status=status.HTTP_400_BAD_REQUEST)
         
 
-    def delete(self, request, pk):
+    def delete(self, request):
         configure()
-        rewards = Add_reward.objects.get(pk=pk)
+        id = request.data('id')
+        rewards = Add_reward.objects.get(id=id)
         rewards.delete()
         return Response({'status': 200, 'message': 'Reward deleted successfully'}, status=status.HTTP_200_OK)
     
@@ -168,19 +170,20 @@ class orders_api(APIView):
             return Response({'status': 400, 'message': 'Invalid data provided','errors': serializer6.errors}, status=status.HTTP_400_BAD_REQUEST)
         
 
-    def put(self, request, pk):
+    def patch( self, request):
         configure()
-        orders = Add_Order.objects.get(pk=pk)
-        serializer6 = Add_Order_Serializer(orders, data=request.data)
+        orders = Add_Order.objects.get(pk=request.data["id"])
+        serializer6 = Add_Order_Serializer(orders, data=request.data, partial=True)
         if serializer6.is_valid():
             serializer6.save()
             return Response({'status': 200, 'message': 'Order updated successfully'}, status=status.HTTP_200_OK)
-        return Response({'status': 400, 'message': 'Invalid data provided','errors': serializer6.errors}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'status': 400, 'message': 'Invalid data provided', 'errors': serializer6.errors}, status=status.HTTP_400_BAD_REQUEST)
         
 
-    def delete(self, request, pk):
+    def delete(self, request):
         configure()
-        orders = Add_Order.objects.get(pk=pk)
+        id= request.GET.get("id")
+        orders = Add_Order.objects.get(id=id)
         orders.delete()
         return Response({'status': 200, 'message': 'Order deleted successfully'}, status=status.HTTP_200_OK)
     
