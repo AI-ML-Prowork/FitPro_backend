@@ -16,5 +16,10 @@ urlpatterns = [
     path("user_list_api", user_list_api, name='user_list_api'),
     path("add_user_api", add_user_api, name='add_user_api'),
 
+
+    path("order/", orders_api.as_view(), name='order'),
+    path("reward/", rewards_api.as_view(), name='reward'),
+    
+
     
 ]
