@@ -104,3 +104,87 @@ def add_user_api(request):
 
             return Response({'status': 201, 'message': 'User added successfully'}, status=status.HTTP_201_CREATED)
         return Response({'status': 400, 'message': 'Invalid data provided', 'errors': serializer4.errors}, status=status.HTTP_400_BAD_REQUEST)
+    
+
+from .serializers import Add_reward_Serializer
+from .models import Add_reward
+class rewards_api(APIView):
+
+    def get(self, request):
+        configure()
+        rewards = Add_reward.objects.all()
+        rewards_serializer = Add_reward_Serializer(rewards, many=True)
+        return Response({'status': 200, 'payload': rewards_serializer.data})
+    
+    def post(self, request):
+        configure()
+        if request.method == 'POST':
+            print(request.data)
+            serializer5 = Add_reward_Serializer(data=request.data)
+            if serializer5.is_valid():
+                serializer5.save()
+                return Response({'status': 201, 'message': 'Reward added successfully'}, status=status.HTTP_201_CREATED)
+            return Response({'status': 400, 'message': 'Invalid data provided','errors': serializer5.errors}, status=status.HTTP_400_BAD_REQUEST)
+        
+
+    def put(self, request, pk):
+        configure()
+        rewards = Add_reward.objects.get(pk=pk)
+        serializer5 = Add_reward_Serializer(rewards, data=request.data)
+        if serializer5.is_valid():
+            serializer5.save()
+            return Response({'status': 200, 'message': 'Reward updated successfully'}, status=status.HTTP_200_OK)
+        return Response({'status': 400, 'message': 'Invalid data provided','errors': serializer5.errors}, status=status.HTTP_400_BAD_REQUEST)
+        
+
+    def delete(self, request, pk):
+        configure()
+        rewards = Add_reward.objects.get(pk=pk)
+        rewards.delete()
+        return Response({'status': 200, 'message': 'Reward deleted successfully'}, status=status.HTTP_200_OK)
+    
+
+
+from .serializers import Add_Order_Serializer
+from .models import Add_Order
+
+
+class orders_api(APIView):
+
+    def get(self, request):
+        configure()
+        orders = Add_Order.objects.all()
+        orders_serializer = Add_Order_Serializer(orders, many=True)
+        return Response({'status': 200, 'payload': orders_serializer.data})
+    
+    def post(self, request):
+        configure()
+        if request.method == 'POST':
+            print(request.data)
+            serializer6 = Add_Order_Serializer(data=request.data)
+            if serializer6.is_valid():
+                serializer6.save()
+                return Response({'status': 201, 'message': 'Order added successfully'}, status=status.HTTP_201_CREATED)
+            return Response({'status': 400, 'message': 'Invalid data provided','errors': serializer6.errors}, status=status.HTTP_400_BAD_REQUEST)
+        
+
+    def put(self, request, pk):
+        configure()
+        orders = Add_Order.objects.get(pk=pk)
+        serializer6 = Add_Order_Serializer(orders, data=request.data)
+        if serializer6.is_valid():
+            serializer6.save()
+            return Response({'status': 200, 'message': 'Order updated successfully'}, status=status.HTTP_200_OK)
+        return Response({'status': 400, 'message': 'Invalid data provided','errors': serializer6.errors}, status=status.HTTP_400_BAD_REQUEST)
+        
+
+    def delete(self, request, pk):
+        configure()
+        orders = Add_Order.objects.get(pk=pk)
+        orders.delete()
+        return Response({'status': 200, 'message': 'Order deleted successfully'}, status=status.HTTP_200_OK)
+    
+
+
+    
+    

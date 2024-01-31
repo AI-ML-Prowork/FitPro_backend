@@ -25,4 +25,13 @@ class wallet_Serializer(serializers.ModelSerializer):
 
 
 
-       
+class Add_reward_Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = Add_reward
+        fields = '__all__'
+
+
+class Add_Order_Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = Add_Order
+        fields = '__all__'       
