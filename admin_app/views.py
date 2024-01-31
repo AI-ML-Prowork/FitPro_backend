@@ -18,26 +18,48 @@ def configure():
 
     
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def base(request):
     configure()
     return render(request, 'base.html')
 
 
-# @login_required(login_url='signin')
+
+# from .models import User
+from fit_app.models import Add_reward
+from admin_app.models import Add_Product
+from admin_app.models import Ordered_Product
+
+def dashboard(request):
+    total_users = User.objects.count()
+    total_rewards = Add_reward.objects.count()
+    total_products = Add_Product.objects.count()
+    total_orders = Ordered_Product.objects.count()
+
+    context = {
+        'total_users': total_users,
+        'total_rewards': total_rewards,
+        'total_products': total_products,
+        'total_orders': total_orders,
+    }
+
+    return render(request, 'admin_app/dashboard.html', context)
+
+
+@login_required(login_url='signin')
 def dashboard(request):
     configure()
     return render(request, 'admin_app/dashboard.html')
 
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def diet_plan(request):
     configure()
     return render(request, 'admin_app/diet_plan.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def order_list(request):
     configure()
     return render(request, 'admin_app/order_list.html')
@@ -47,8 +69,8 @@ def order_list(request):
 from django.views.decorators.csrf import csrf_exempt
 
 
-@csrf_exempt
-# @login_required(login_url='signin')
+
+@login_required(login_url='signin')
 def add_product(request):
     configure()
     message = ''
@@ -85,7 +107,7 @@ def add_product(request):
 
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def product_list(request):
     configure()
     products = Add_Product.objects.all()
@@ -94,7 +116,7 @@ def product_list(request):
 
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 # def add_profile(request):
 #     message = ''
 #     if request.method == "POST":
@@ -121,92 +143,92 @@ def product_list(request):
 
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 # def profile_list(request):
 #     profiles = UserProfile.objects.all()
 #     return render(request, 'admin_app/profile_list.html', {'profiles': profiles})
 
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def reward_list(request):
     configure()
     return render(request, 'admin_app/reward_list.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def subscription_plan(request):
     configure()
     return render(request, 'admin_app/subscription_plan.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def user_list(request):
     configure()
     return render(request, 'admin_app/user_list.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def wallet_management(request):
     configure()
     return render(request, 'admin_app/wallet_management.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def order_list(request):
     configure()
     return render(request, 'admin_app/order_list.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def add_product(request):
     configure()
     return render(request, 'admin_app/add_product.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def product_list(request):
     configure()
     return render(request, 'admin_app/product_list.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def profile_list(request):
     configure()
     return render(request, 'admin_app/profile_list.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def add_profile(request):
     configure()
     return render(request, 'admin_app/add_profile.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def reward_list(request):
     configure()
     return render(request, 'admin_app/reward_list.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def subscription_plan(request):
     configure()
     return render(request, 'admin_app/subscription_plan.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def user_list(request):
     configure()
     return render(request, 'admin_app/user_list.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def wallet_management(request):
     configure()
     return render(request, 'admin_app/wallet_management.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def transaction_history(request):
     configure()
     return render(request, 'admin_app/transaction_history.html')
@@ -266,7 +288,7 @@ def signin(request):
     return render(request, 'signin.html')
 
 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def logout(request):
     configure()
     auth_logout(request)
