@@ -16,7 +16,7 @@
     <p>{{ message }}</p>
 {% endif %}
 
-<form method="post" action="{% url 'add_product' %}">
+<form method="post" action="{% url 'admin_app:add_product' %}">
     {% csrf_token %}
     
     <label for="product_name">Product Name:</label>

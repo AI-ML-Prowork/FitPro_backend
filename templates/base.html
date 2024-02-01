@@ -161,7 +161,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'base' %}">FitPro</a>
+        <a class="navbar-brand" href="{% url 'admin_app:base' %}">FitPro</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -174,7 +174,7 @@
                 <!-- Add other menu items in the top navbar as needed -->
                 <li class="nav-item">
                     <!-- Replace the button with an anchor tag for logout -->
-                    <a class="btn logout-btn" href="{% url 'logout' %}">Logout</a>
+                    <a class="btn logout-btn" href="{% url 'admin_app:logout' %}">Logout</a>
                 </li>
             </ul>
         </div>
@@ -189,23 +189,23 @@
             <div class="position-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                        <a class="nav-link" href="{% url 'admin_app:dashboard' %}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'diet_plan' %}">Diet Plan</a>
+                        <a class="nav-link" href="{% url 'admin_app:diet_plan' %}">Diet Plan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'order_list' %}">Order List</a>
+                        <a class="nav-link" href="{% url 'admin_app:order_list' %}">Order List</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link collapsible" data-bs-toggle="collapse" href="#productsCollapse" role="button" aria-expanded="true" aria-controls="productsCollapse">Products</a>
                         <div class="collapse show" id="productsCollapse">
                             <ul class="nav flex-column ml-3">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'add_product' %}">Add Product</a>
+                                    <a class="nav-link" href="{% url 'admin_app:add_product' %}">Add Product</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'product_list' %}">Product List</a>
+                                    <a class="nav-link" href="{% url 'admin_app:product_list' %}">Product List</a>
                                 </li>
                             </ul>
                         </div>
@@ -215,28 +215,28 @@
                         <div class="collapse show" id="profileCollapse">
                             <ul class="nav flex-column ml-3">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'add_profile' %}">Add Profile</a>
+                                    <a class="nav-link" href="{% url 'admin_app:add_profile' %}">Add Profile</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'profile_list' %}">Profile List</a>
+                                    <a class="nav-link" href="{% url 'admin_app:profile_list' %}">Profile List</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'reward_list' %}">Reward List</a>
+                        <a class="nav-link" href="{% url 'admin_app:reward_list' %}">Reward List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'subscription_plan' %}">Subscription Plan</a>
+                        <a class="nav-link" href="{% url 'admin_app:subscription_plan' %}">Subscription Plan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'user_list' %}">User List</a>
+                        <a class="nav-link" href="{% url 'admin_app:user_list' %}">User List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'wallet_management' %}">Wallet Management</a>
+                        <a class="nav-link" href="{% url 'admin_app:wallet_management' %}">Wallet Management</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'transaction_history' %}">Transaction History</a>
+                        <a class="nav-link" href="{% url 'admin_app:transaction_history' %}">Transaction History</a>
                     </li>
                 </ul>
             </div>

@@ -5,6 +5,9 @@ from rest_framework.routers import DefaultRouter
 from . views import product_list_api
 
 
+app_name= 'admin_app'
+
+
 urlpatterns = [
     path('signup/', signup, name='signup'),
     path('signin/', signin, name='signin'),
