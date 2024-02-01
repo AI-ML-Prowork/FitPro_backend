@@ -24,8 +24,6 @@ def base(request):
     return render(request, 'base.html')
 
 
-
-# from .models import User
 from fit_app.models import Add_reward
 from admin_app.models import Add_Product
 from admin_app.models import Ordered_Product
@@ -99,8 +97,6 @@ def add_product(request):
         )
         create_product.save()
         message = 'Product Added Successfully. Check the Product List Page'
-        # Redirect to the product list page after successful submission
-        # return redirect('/product_list', {'message': message})
 
     return render(request, 'admin_app/add_product.html', {'message': message})
 
